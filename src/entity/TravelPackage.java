@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TravelPackage {
@@ -15,8 +16,8 @@ public class TravelPackage {
     public TravelPackage(String name, int passengerCapacity, List<Destination> itinerary, List<Passenger> passengersList) {
         this.name = name;
         this.passengerCapacity = passengerCapacity;
-        this.itinerary = itinerary;
-        this.passengersList = passengersList;
+        this.itinerary = new ArrayList<>();
+        this.passengersList = new ArrayList<>();
     }
 
     public String getName() {
