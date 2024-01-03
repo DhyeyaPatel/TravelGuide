@@ -67,6 +67,28 @@ public class Passenger {
     public void setActivities(List<Activity> activities) {
         this.activities = activities;
     }
+
+    public String getPassengerDetails() {
+        StringBuilder details = new StringBuilder("Passenger Details:\n");
+        details.append("Name: ").append(name).append(", Number: ").append(passengerNumber).append("\n");
+        if (type == Subscription.STANDARD || type == Subscription.GOLD) {
+            details.append("Balance: $").append(balance).append("\n");
+        }
+        details.append("Activities:\n");
+        for (Activity activity : activities) {
+            details.append("Activity: ").append(activity.getName())
+                    .append(", Destination: ").append(getDestinationName(activity))
+                    .append(", Price: $").append(activity.getCost()).append("\n");
+        }
+        return details.toString();
+    }
+
+    private String getDestinationName(Activity activity) {
+        for (Destination destination : activity.getDestinations()) {
+            if (destination.getActivities().contains(activity)) {
+                return destination.getName();
+            }
+        }
+        return "Unknown";
+    }
 }
-
-

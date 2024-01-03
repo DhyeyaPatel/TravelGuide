@@ -34,4 +34,12 @@ public class Destination {
     public void setActivities(List<Activity> activities) {
         this.activities = activities;
     }
+
+    public String getDestinationDetails() {
+        StringBuilder details = new StringBuilder("Destination: " + name + "\n");
+        for (Activity activity : activities) {
+            details.append(activity.getActivityDetails()).append("\n");
+        }
+        return details.toString();
+    }
 }

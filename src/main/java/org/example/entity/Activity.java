@@ -1,17 +1,21 @@
 package org.example.entity;
 
+import java.util.List;
+
 public class Activity {
     private String name;
     private String description;
     private double cost;
     private int capacity;
+    private List<Destination> destinations;
 
     // Constructor
-    public Activity(String name, String description, double cost, int capacity) {
+    public Activity(String name, String description, double cost, int capacity, List<Destination> destinations) {
         this.name = name;
         this.description = description;
         this.cost = cost;
         this.capacity = capacity;
+        this.destinations = destinations;
     }
 
     public boolean isAvailable() {
@@ -58,5 +62,18 @@ public class Activity {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public List<Destination> getDestinations() {
+        return destinations;
+    }
+
+    public void setDestinations(List<Destination> destinations) {
+        this.destinations = destinations;
+    }
+
+    public String getActivityDetails() {
+        return String.format("Activity: %s, Cost: $%.2f, Capacity: %d, Description: %s",
+                name, cost, capacity, description);
     }
 }

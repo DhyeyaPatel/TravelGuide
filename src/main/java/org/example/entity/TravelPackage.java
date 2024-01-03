@@ -59,4 +59,22 @@ public class TravelPackage {
     public void setPassengersList(List<Passenger> passengersList) {
         this.passengersList = passengersList;
     }
+
+    public String getItineraryDetails() {
+        StringBuilder details = new StringBuilder("Travel Package: " + name + "\n");
+        for (Destination destination : itinerary) {
+            details.append(destination.getDestinationDetails()).append("\n");
+        }
+        return details.toString();
+    }
+
+    public String getPassengerList() {
+        StringBuilder details = new StringBuilder("Passenger List for Travel Package: " + name + "\n");
+        details.append("Capacity: ").append(passengerCapacity).append("\n");
+        details.append("Number of Passengers: ").append(passengersList.size()).append("\n");
+        for (Passenger passenger : passengersList) {
+            details.append("Name: ").append(passenger.getName()).append(", Number: ").append(passenger.getPassengerNumber()).append("\n");
+        }
+        return details.toString();
+    }
 }
