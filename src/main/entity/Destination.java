@@ -1,4 +1,4 @@
-package pojo;
+package main.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,15 +7,18 @@ public class Destination {
     private String name;
     private List<Activity> activities;
 
-    public Destination() {
-        super();
-    }
-
+    // Constructor
     public Destination(String name, List<Activity> activities) {
         this.name = name;
-        this.activities = new ArrayList<>();;
+        this.activities = new ArrayList<>();
+        ;
     }
 
+    public void addActivity(Activity activity) {
+        activities.add(activity);
+    }
+
+    // Getters and Setters
     public String getName() {
         return name;
     }

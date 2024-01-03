@@ -1,4 +1,4 @@
-package pojo;
+package main.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,7 @@ public class TravelPackage {
     private List<Destination> itinerary;
     private List<Passenger> passengersList;
 
-    public TravelPackage() {
-        super();
-    }
-
+    // Constructor
     public TravelPackage(String name, int passengerCapacity, List<Destination> itinerary, List<Passenger> passengersList) {
         this.name = name;
         this.passengerCapacity = passengerCapacity;
@@ -20,6 +17,17 @@ public class TravelPackage {
         this.passengersList = new ArrayList<>();
     }
 
+    public void addDestination(Destination destination) {
+        itinerary.add(destination);
+    }
+
+    public void addPassenger(Passenger passenger) {
+        if (passengersList.size() < passengerCapacity) {
+            passengersList.add(passenger);
+        }
+    }
+
+    // Getters and Setters
     public String getName() {
         return name;
     }
