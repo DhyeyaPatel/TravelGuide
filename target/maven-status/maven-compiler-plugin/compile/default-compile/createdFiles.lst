@@ -1,0 +1,9 @@
+org\example\entity\Passenger.class
+org\example\entity\Activity.class
+org\example\entity\TravelPackage.class
+org\example\Main.class
+org\example\entity\Subscription$1.class
+org\example\entity\Subscription$3.class
+org\example\entity\Subscription$2.class
+org\example\entity\Subscription.class
+org\example\entity\Destination.class

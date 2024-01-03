@@ -1,4 +1,4 @@
-package main.entity;
+package org.example.entity;
 
 public enum Subscription {
     STANDARD {
