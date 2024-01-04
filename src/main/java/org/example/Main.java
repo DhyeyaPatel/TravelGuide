@@ -9,7 +9,15 @@ import org.example.entity.passengerType.Subscription;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Main.
+ */
 public class Main {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
         TravelPack europePackage = new TravelPack("Europe Tour", 20);

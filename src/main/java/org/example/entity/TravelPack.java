@@ -5,13 +5,22 @@ import org.example.entity.passengerType.Subscription;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Travel pack.
+ */
 public class TravelPack {
     private String name;
     private int passengerCapacity;
     private List<Destination> destinations;
     private List<Passenger> passengers;
 
-    // Constructor
+    /**
+     * Instantiates a new Travel pack.
+     *
+     * @param name              the name
+     * @param passengerCapacity the passenger capacity
+     */
+// Constructor
     public TravelPack(String name, int passengerCapacity) {
         this.name = name;
         this.passengerCapacity = passengerCapacity;
@@ -19,10 +28,20 @@ public class TravelPack {
         this.passengers = new ArrayList<>();
     }
 
+    /**
+     * Add destination.
+     *
+     * @param destination the destination
+     */
     public void addDestination(Destination destination) {
         destinations.add(destination);
     }
 
+    /**
+     * Add passenger.
+     *
+     * @param passenger the passenger
+     */
     public void addPassenger(List<Passenger> passenger) {
         if (passengers.size() < passengerCapacity) {
             for (Passenger p : passenger)
@@ -30,6 +49,10 @@ public class TravelPack {
         }
     }
 
+
+    /**
+     * Print itinerary.
+     */
     public void printItinerary() {
         System.out.println("Travel Package: " + name);
         for (Destination destination : destinations) {
@@ -53,6 +76,11 @@ public class TravelPack {
         }
     }
 
+    /**
+     * Print passenger details.
+     *
+     * @param passengerList the passenger list
+     */
     public void printPassengerDetails(List<Passenger> passengerList) {
         for (Passenger passenger : passengerList) {
             System.out.println("Passenger Details:");
@@ -70,6 +98,13 @@ public class TravelPack {
         }
     }
 
+    /**
+     * Calculate price double.
+     *
+     * @param passenger the passenger
+     * @param activity  the activity
+     * @return the double
+     */
     public double calculatePrice(Passenger passenger, Activity activity) {
         if (passenger.getType().equals(Subscription.GOLD))
             return activity.getCost() * 0.9;
@@ -79,6 +114,9 @@ public class TravelPack {
         return 0.0;
     }
 
+    /**
+     * Print available activities.
+     */
     public void printAvailableActivities() {
         System.out.println("Available Activities:");
         for (Destination destination : destinations) {

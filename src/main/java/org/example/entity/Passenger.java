@@ -5,6 +5,9 @@ import org.example.entity.passengerType.Subscription;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Passenger.
+ */
 public class Passenger {
     private String name;
     private int passengerNumber;
@@ -12,7 +15,15 @@ public class Passenger {
     private Subscription type;
     private List<Activity> activities;
 
-    // Constructor
+    /**
+     * Instantiates a new Passenger.
+     *
+     * @param name            the name
+     * @param passengerNumber the passenger number
+     * @param balance         the balance
+     * @param type            the type
+     */
+// Constructor
     public Passenger(String name, int passengerNumber, double balance, Subscription type) {
         this.name = name;
         this.passengerNumber = passengerNumber;
@@ -21,27 +32,57 @@ public class Passenger {
         this.activities = new ArrayList<>();
     }
 
-    // Getters
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
+// Getters
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets passenger number.
+     *
+     * @return the passenger number
+     */
     public int getPassengerNumber() {
         return passengerNumber;
     }
 
+    /**
+     * Gets balance.
+     *
+     * @return the balance
+     */
     public double getBalance() {
         return balance;
     }
 
+    /**
+     * Gets activities.
+     *
+     * @return the activities
+     */
     public List<Activity> getActivities() {
         return activities;
     }
 
+    /**
+     * Gets type.
+     *
+     * @return the type
+     */
     public Subscription getType() {
         return type;
     }
 
+    /**
+     * Sign up for activity.
+     *
+     * @param activity the activity
+     */
     public void signUpForActivity(Activity activity) {
         if (activity.getCapacity() > 0) {
             activities.add(activity);
