@@ -1,0 +1,45 @@
+@startuml
+
+class TravelPackage {
+  - name: String
+  - capacity: int
+  - itinerary: List<Destination>
+  - passengers: List<Passenger>
+}
+
+class Destination {
+  - name: String
+  - activities: List<Activity>
+}
+
+class Activity {
+  - name: String
+  - description: String
+  - cost: double
+  - capacity: int
+}
+
+enum PassengerType {
+  STANDARD
+  GOLD
+  PREMIUM
+}
+
+class Passenger {
+  - name: String
+  - number: int
+  - type: PassengerType
+}
+
+class Itinerary {
+  - destinations: List<Destination>
+}
+
+TravelPackage -- Destination : contains >
+Destination -- Activity : has >
+Activity -- Destination : available at >
+Passenger -- Activity : signs up for >
+Passenger -- Itinerary : signs up for >
+PassengerType --|> Enum
+Passenger -- PassengerType : subscription
+@enduml

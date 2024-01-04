@@ -1,0 +1,51 @@
+@startuml
+
+class TravelPack {
+  - name: String
+  - capacity: int
+  - itinerary: List<Destination>
+  - passengers: List<Passenger>
+  + addDestination(Destination) : void
+  + addPassenger(List<Passenger>) : void
+  + printItinerary(): void
+  + printPassengerList(): void
+  + printPassengerDetails(List<Passenger>) : void
+  + calculatePrice(Passenger, Activity) : double
+  + printAvailableActivities() : void
+}
+
+class Destination {
+  - name: String
+  - activities: List<Activity>
+}
+
+class Activity {
+  - name: String
+  - description: String
+  - cost: double
+  - capacity: int
+  - destination: Destination
+}
+
+enum Subscription {
+  STANDARD
+  GOLD
+  PREMIUM
+}
+
+class Passenger {
+  - name: String
+  - number: int
+  - type: Subscription
+  - balance: double
+  - activities: List<Activity>
+  + signUpForActivity(Activity): void
+}
+
+TravelPack -- Destination : contains >
+Destination -- Activity : has >
+Activity -- Destination : available at >
+Passenger -- Activity : signs up for >
+Passenger -- Subscription : subscription <
+
+@enduml

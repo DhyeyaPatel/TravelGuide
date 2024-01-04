@@ -1,5 +1,7 @@
 package org.example.entity;
 
+import org.example.entity.passengerType.Subscription;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,84 +13,47 @@ public class Passenger {
     private List<Activity> activities;
 
     // Constructor
-    public Passenger(String name, int passengerNumber, Subscription type) {
+    public Passenger(String name, int passengerNumber, double balance, Subscription type) {
         this.name = name;
         this.passengerNumber = passengerNumber;
+        this.balance = (type.equals(Subscription.PREMIUM) ? 0.0 : balance);
         this.type = type;
         this.activities = new ArrayList<>();
     }
 
-    public boolean canSignUpForActivity(Activity activity) {
-        return type.canSignUpForActivity(this, activity);
-    }
-
-    public void addActivity(Activity activity) {
-        activities.add(activity);
-        type.deductCostFromBalance(this, activity.getCost());
-    }
-
-    // Getters and Setters
+    // Getters
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getPassengerNumber() {
         return passengerNumber;
     }
 
-    public void setPassengerNumber(int passengerNumber) {
-        this.passengerNumber = passengerNumber;
-    }
-
     public double getBalance() {
         return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public Subscription getType() {
-        return type;
-    }
-
-    public void setType(Subscription type) {
-        this.type = type;
     }
 
     public List<Activity> getActivities() {
         return activities;
     }
 
-    public void setActivities(List<Activity> activities) {
-        this.activities = activities;
+    public Subscription getType() {
+        return type;
     }
 
-    public String getPassengerDetails() {
-        StringBuilder details = new StringBuilder("Passenger Details:\n");
-        details.append("Name: ").append(name).append(", Number: ").append(passengerNumber).append("\n");
-        if (type == Subscription.STANDARD || type == Subscription.GOLD) {
-            details.append("Balance: $").append(balance).append("\n");
-        }
-        details.append("Activities:\n");
-        for (Activity activity : activities) {
-            details.append("Activity: ").append(activity.getName())
-                    .append(", Destination: ").append(getDestinationName(activity))
-                    .append(", Price: $").append(activity.getCost()).append("\n");
-        }
-        return details.toString();
-    }
-
-    private String getDestinationName(Activity activity) {
-        for (Destination destination : activity.getDestinations()) {
-            if (destination.getActivities().contains(activity)) {
-                return destination.getName();
+    public void signUpForActivity(Activity activity) {
+        if (activity.getCapacity() > 0) {
+            activities.add(activity);
+            activity.getDestination().getActivities().remove(activity);
+            activity.getDestination().getActivities().add(new Activity(activity.getName(),
+                    activity.getDescription(), activity.getCost(), activity.getCapacity() - 1, activity.getDestination()));
+            if (this.getType().equals(Subscription.GOLD)) {
+                double discountedCost = activity.getCost() * 0.9;
+                balance -= discountedCost;
+            } else if (this.getType().equals(Subscription.STANDARD)) {
+                balance -= activity.getCost();
             }
         }
-        return "Unknown";
     }
 }
