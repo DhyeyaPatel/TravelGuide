@@ -49,7 +49,6 @@ public class TravelPack {
         }
     }
 
-
     /**
      * Print itinerary.
      */
@@ -66,6 +65,9 @@ public class TravelPack {
         }
     }
 
+    /**
+     * Print passenger list.
+     */
     public void printPassengerList() {
         System.out.println("Passenger List for Travel Package: " + name);
         System.out.println("Passenger Capacity: " + passengerCapacity);
@@ -126,5 +128,41 @@ public class TravelPack {
                         ", Capacity: " + activity.getCapacity());
             }
         }
+    }
+
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Gets passenger capacity.
+     *
+     * @return the passenger capacity
+     */
+    public int getPassengerCapacity() {
+        return passengerCapacity;
+    }
+
+    /**
+     * Gets destinations.
+     *
+     * @return the destinations
+     */
+    public List<Destination> getDestinations() {
+        return destinations;
+    }
+
+    /**
+     * Gets passengers.
+     *
+     * @return the passengers
+     */
+    public List<Passenger> getPassengers() {
+        return passengers;
     }
 }
