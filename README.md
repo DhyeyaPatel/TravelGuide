@@ -45,6 +45,11 @@ The following are the sub-tasks that needs to be done. The code needs to be writ
 
 ## Deliverables
 
-1. High-Level Diagram
-2. Low-Level Diagram
+1. High-Level Diagram  <br><br>
+![High_Level_Diagram](https://github.com/DhyeyaPatel/TravelGuide/blob/main/diagrams/highLevelDiagram.png)
+
+2. Low-Level Diagram    <br><br>
+![Low_Level_Diagram](https://github.com/DhyeyaPatel/TravelGuide/blob/main/diagrams/lowLevelDiagram.png)
+
 3. Source Code
+Please click [here](https://github.com/DhyeyaPatel/TravelGuide/tree/main)
